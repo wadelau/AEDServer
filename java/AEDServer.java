@@ -3,6 +3,8 @@
  * 20080322 by wadelau
  * refined by Xenxin@Ufqi
  * 21:29 27 December 2017
+ * Channels? @todo
+ * Java NIO? @todo
  */
 
 package samepleserver;
@@ -98,6 +100,10 @@ class Handler implements Runnable{
 				pw.println( sendout );
 				pw.flush();
 				//Log.save(loglevel,"cmd:["+cmd+"] params:["+params+"]");
+				if(msg.equals("quit") || msg.equals("exit")){
+					socket.close(); //- remedy by wadelau, on Sat Feb  8 10:02:58 CST 2014
+					break ;
+				}
 			}
 		}
 		catch (IOException e){

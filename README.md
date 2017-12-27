@@ -5,7 +5,7 @@ Networking programming with high-performance， heavy-load and low-latency beari
 
 Scripts include CPlusPlus, -Java, -Perl, and -Python.
 
-Many of them are copied from Internet and improved, tested and enhanced with real demand from production lines.
+Some of those codes are copied from Internet and improved, enhanced and tested with real demand from production lines.
 
 Last but no least, built for any aritificical and/or intelligent system which has been regarded as a ROBOT or BOT.
 

@@ -1,6 +1,6 @@
 /*
  * AEDClient in Java, Server-side
- * 20080322 by wadelau
+ * 20080322 by Wadelau
  * refined by Xenxin@Ufqi
  * 21:44 27 December 2017
  */
