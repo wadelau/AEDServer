@@ -9,6 +9,10 @@ Many of them are copied from Internet and improved, tested and enhanced with rea
 
 Last but no least, built for any aritificical and/or intelligent system which has been regarded as a ROBOT or BOT.
 
+
+     Outer World <<====>> Communication Server (AEDServer)  <<====>> Core AI Service / Servant
+
+
 # AEDServer Architecture
 
 Run/Daemon
