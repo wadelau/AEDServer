@@ -20,9 +20,9 @@ myport = 8881
 #
 class MainServerSocket(asyncore.dispatcher):
 	
-	myservice = '';
+    myservice = '';
 	
-	#
+    #
     def __init__(self, host, port):
         print(str(date.today())+': initing MSS....')
         asyncore.dispatcher.__init__(self)
@@ -33,15 +33,14 @@ class MainServerSocket(asyncore.dispatcher):
         logx.basicConfig(filename='./log/AEDServer.log', format='%(asctime)s\t%(levelname)s\t%(message)s', level=logx.DEBUG)
         logx.info('server in coming up....')
          
-		#		 
-		# main service init....
-		#
+        #		 
+        # main service init....
+        #
 	
-	#
+    #
     def handle_accept(self):
         newSocket, address = self.accept(  )
         print("Connected from", address)
-        #SecondaryServerSocket(newSocket)
         try:
             SecondaryServerSocket(newSocket, self.myservice)
         except:
@@ -53,7 +52,9 @@ class MainServerSocket(asyncore.dispatcher):
 #
 class SecondaryServerSocket(asynchat.async_chat):
 
-	#
+    myservice = ''
+    
+    #
     def __init__(self, mysock, myservice):
         print(str(datetime.now())+': initing SSS....{}, {}'.format(mysock, myservice))
         self.myservice = myservice
@@ -63,6 +64,7 @@ class SecondaryServerSocket(asynchat.async_chat):
         self.set_terminator('\n\n'.encode("utf8")) # finish an input and start to feedback
         self.data = []
 
+    #
     def collect_incoming_data(self, data):
         #self.data.append(data)
         try:
@@ -80,6 +82,7 @@ class SecondaryServerSocket(asynchat.async_chat):
             #logx.warn('recv-data error for [%s], trying to close...', data)
             self.found_terminator()
 
+    #
     def found_terminator(self):
         #for line in self.data:
         #    print("recv-line:{}, knn:{}".format(line, self.myknn))
@@ -93,6 +96,7 @@ class SecondaryServerSocket(asynchat.async_chat):
     def doSomething(self, inputLine):
        	val = 0.0
         try:
+            # val = self.myservice.doSomething(inputLine)
             val = 0.1
         except:
             print("error for doSomething:{}".format(inputLine))
@@ -100,6 +104,7 @@ class SecondaryServerSocket(asynchat.async_chat):
             pass
         return val
 
+    #
     def handle_close(self):
         #print ("Disconnected from", self.getpeername(  ))
         self.close(  )
