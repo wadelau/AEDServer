@@ -76,6 +76,12 @@ class SecondaryServerSocket(asynchat.async_chat):
                     rtndata = 0.0
                 self.data.append(line + "\t" + str(rtndata) + "\n")
                 #print("recv-data:{}, pdata:{}".format(line, pdata))
+	    # return over long connnection, bgn
+	    self.data.append("\n") # line feed as a return end, keep same with client
+	    logx.info("send-back:[%s]", self.data)
+            self.push((''.join(self.data).encode("utf8")))
+            self.data = []
+	    # return over long connection, end
         except:
             print("recv-data error for [{}], trying to close...".format(data))
             #pass
